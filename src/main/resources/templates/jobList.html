@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Job list</title>
+    <link rel="stylesheet" href="../static/styles/jobListStyles.css" th:href="@{styles/jobListStyles.css}">
+</head>
+<body>
+<header>
+<h1>Choose job</h1>
+</header>
+<main>
+    <div class="list">
+        <ul class="myUL" th:remove="all-but-first">
+            <li th:each="job: ${jobs}">
+                <a href="#">
+                    <button class="button" th:text="${job}">
+                        Job 1
+                    </button>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <button class="button">
+                        Job 2
+                    </button>
+                </a>
+            </li>
+        </ul>
+    </div>
+</main>
+<footer>
+
+</footer>
+</body>
+</html>
