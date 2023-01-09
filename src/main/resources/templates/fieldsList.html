@@ -13,9 +13,9 @@
 <main>
     <div class="list">
         <ul class="myUL" th:remove="all-but-first">
-            <li>
+            <li th:each="name: ${names}">
                 <a href="#">
-                    <button class="button">
+                    <button class="button" th:text="${name}">
                         Job 1
                     </button>
                 </a>
