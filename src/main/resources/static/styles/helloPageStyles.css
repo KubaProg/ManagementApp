@@ -20,7 +20,7 @@ body {
 }
 
 button {
-    padding: 4em 5em;
+    padding: 2em 3em;
     border: none;
     border-radius: 0.5em;
     background-color: #0077c9;
@@ -31,6 +31,14 @@ button {
 
 button:hover {
     background-color: #005da3;
+}
+
+a{
+    text-decoration: none;
+    font-size: 2em;
+    font-family: Arial,sans-serif;
+    font-weight: bold;
+    color: white;
 }
 
 
