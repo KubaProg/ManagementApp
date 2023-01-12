@@ -16,18 +16,14 @@ public class Employee {
 
     private String email;
 
-    @ManyToMany(mappedBy = "employees")
-    private ArrayList<JobCycle> jobCycles;
-
     public Employee() {
         // default constructor
     }
 
-    public Employee(Long id, String name, String email, ArrayList<JobCycle> jobCycle) {
+    public Employee(Long id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.jobCycles = jobCycle;
     }
 
     public Long getId() {
@@ -54,11 +50,4 @@ public class Employee {
         this.email = email;
     }
 
-    public ArrayList<JobCycle> getJobCycle() {
-        return jobCycles;
-    }
-
-    public void setJobCycle(ArrayList<JobCycle> jobCycle) {
-        this.jobCycles = jobCycle;
-    }
 }

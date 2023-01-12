@@ -23,30 +23,13 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
             <column name="start_time" type="varchar(255)"/>
             <column name="end_time" type="varchar(255)"/>
             <column name="job_name" type="varchar(255)"/>
-        </createTable>
-    </changeSet>
-
-    <changeSet id="3" author="kuba">
-        <createTable tableName="job_cycle_employees">
-            <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="employees_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="fk_employee_job_cycle_employee" references="employee(id)"/>
-            </column>
-            <column name="job_cycles_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="fk_employee_job_cycle_job_cycle" references="job_cycle(id)"/>
-            </column>
-            <column name="start_time" type="varchar(255)">
+            <column name="employee_id" type="BIGINT">
+                <constraints nullable="false"
+                             foreignKeyName="fk_jobCycle_employee"
+                             referencedTableName="employee"
+                             referencedColumnNames="id"/>
             </column>
         </createTable>
-    </changeSet>
-
-
-    <changeSet id="4" author="kuba">
-        <update tableName="job_cycle_employees">
-            <column name="START_TIME" valueComputed="(SELECT start_time FROM job_cycle WHERE job_cycle.id = job_cycle_employees.job_cycles_id)"/>
-        </update>
     </changeSet>
 
 </databaseChangeLog>

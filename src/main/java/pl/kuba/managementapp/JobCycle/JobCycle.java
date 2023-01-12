@@ -12,8 +12,9 @@ public class JobCycle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany
-    private ArrayList<Employee> employees;
+    @ManyToOne
+    @JoinColumn(name = "employee_id", referencedColumnName = "id")
+    private Employee employee;
     private String startTime;
 
     private String endTime;
