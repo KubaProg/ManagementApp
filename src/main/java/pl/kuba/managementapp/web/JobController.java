@@ -20,7 +20,7 @@ public class JobController {
 
     @PostMapping("/jobList")
     public String getJobList(Model model){
-        List<String> jobs = jobService.findAllJobs();
+        List<Job> jobs = jobService.findAllJobs();
         model.addAttribute("jobs", jobs);
         return "jobList";
     }

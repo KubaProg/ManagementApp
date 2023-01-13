@@ -1,9 +1,7 @@
 package pl.kuba.managementapp.JobCycle;
 import jakarta.persistence.*;
 import pl.kuba.managementapp.Employee.Employee;
-
-import java.util.ArrayList;
-import java.util.List;
+import pl.kuba.managementapp.Field.Field;
 
 @Entity
 public class JobCycle {
@@ -15,17 +13,18 @@ public class JobCycle {
     @ManyToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private Employee employee;
+
+    @ManyToOne
+    @JoinColumn(name = "field_id", referencedColumnName = "id")
+    private Field field;
     private String startTime;
 
     private String endTime;
 
     private String jobName;
 
-    public JobCycle() {
-        // default constructor
-    }
-
-    public JobCycle(String startTime, String endTime, String status) {
+    public JobCycle(Field field, String startTime, String endTime, String status) {
+        this.field = field;
         this.startTime = startTime;
         this.endTime = endTime;
         this.jobName = status;

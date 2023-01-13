@@ -15,8 +15,8 @@ private final JobRepository jobRepository;
         this.jobRepository = jobRepository;
     }
 
-    public List<String> findAllJobs(){
-        return jobRepository.findAll().stream().map(Job::getName).toList();
+    public List<Job> findAllJobs(){
+        return jobRepository.findAll();
     }
 
 }

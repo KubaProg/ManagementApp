@@ -14,11 +14,13 @@
     <div class="list">
         <ul class="myUL" th:remove="all-but-first">
             <li th:each="job: ${jobs}">
-                <a th:href= "@{/fieldsList}">
-                    <button class="button" th:text="${job}">
-                        Job 1
-                    </button>
-                </a>
+<!--                <a th:href= "@{/fieldsList}">-->
+                        <form th:action="@{/save}" method="post">
+                        <button th:name="jobName" class="button" th:text="*{job.name}" th:value="*{job.name} " >
+                            Job 1
+                        </button>
+                    </form>
+<!--                </a>-->
             </li>
             <li>
                 <a href="#">

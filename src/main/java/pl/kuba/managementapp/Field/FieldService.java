@@ -13,11 +13,8 @@ public class FieldService {
         this.fieldRepository = fieldRepository;
     }
 
-    public List<String> findAllFieldNames(){
-        return fieldRepository.findAll()
-                .stream()
-                .map(Field::getName)
-                .toList();
+    public List<Field> findAllFields(){
+        return fieldRepository.findAll();
     }
 
 }

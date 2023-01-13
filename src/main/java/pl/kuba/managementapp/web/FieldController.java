@@ -3,6 +3,7 @@ package pl.kuba.managementapp.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import pl.kuba.managementapp.Field.Field;
 import pl.kuba.managementapp.Field.FieldService;
 
 import java.util.List;
@@ -18,8 +19,8 @@ public class FieldController {
 
     @GetMapping("/fieldsList")
     public String fields(Model model){
-        List<String> names = fieldService.findAllFieldNames();
-        model.addAttribute("names", names);
+        List<Field> fields = fieldService.findAllFields();
+        model.addAttribute("fields", fields);
         return "fieldsList";
     }
 
