@@ -22,5 +22,9 @@ public class HomeController {
         return "adminsPanel";
     }
 
+    @GetMapping("/choice")
+    public String choiceForm(){
+        return "choice-form";
+    }
 
 }

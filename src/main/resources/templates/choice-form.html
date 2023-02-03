@@ -1,0 +1,18 @@
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="../static/styles/helloPageStyles.css" th:href="@{styles/choicePageStyles.css}">
+  <title>Choice page</title>
+</head>
+<body>
+<div class="employee">
+  <form th:action="@{/jobList}" method="post">
+    <button>Log in as employee</button>
+  </form>
+</div>
+<div class="admin">
+  <form th:action="@{/adminsPanel}" method="post">
+    <button>Log in as admin</button>
+  </form>
+</div>
+</body>
+</html>
