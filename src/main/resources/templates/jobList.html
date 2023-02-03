@@ -30,7 +30,11 @@
                 </a>
             </li>
         </ul>
-            <button class="einde-werk">Einde werk</button>
+        <form th:action="@{/end}" method="post">
+            <button class="einde-werk" >
+                Einde werk
+            </button>
+        </form>
     </div>
 </main>
 <footer>

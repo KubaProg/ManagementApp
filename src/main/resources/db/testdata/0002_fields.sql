@@ -1,6 +1,6 @@
-insert into Field (name) values ('afd1');
-insert into Field (name) values ('afd2');
-insert into Field (name) values ('afd3');
-insert into Field (name) values ('afd4');
-insert into Field (name) values ('afd5');
-insert into Field (name) values ('afd6');
+insert into Field (name) values ('ziemnioki');
+insert into Field (name) values ('truskawy');
+insert into Field (name) values ('szparagi');
+insert into Field (name) values ('borówy');
+insert into Field (name) values ('maliny');
+insert into Field (name) values ('winogronki');

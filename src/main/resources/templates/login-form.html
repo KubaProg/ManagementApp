@@ -13,25 +13,11 @@
     <div class="form">
         <div class="userForm">
             <h2>Log in as User</h2>
-            <form action="/jobList" class="userLoggingForm" method="post">
+            <form th:action="@{/login}" class="userLoggingForm" method="post">
                 <div class="input">
                     <p>Login</p>
-                    <input type="text" name="login" placeholder="Enter your login">
+                    <input type="text" name="username" placeholder="Enter your username">
                     <p>Password</p>
-                    <input type="text" name="password" placeholder="Enter your password">
-                    <div class="button">
-                        <button type="submit">Log in</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="adminForm">
-            <form action="/adminsPanel" class="userLoggingForm" method="post">
-                <h2>Log in as Admin</h2>
-                <div class="input">
-                    <p>Login</p>
-                    <input type="text" name="login" placeholder="Enter your login">
-                     <p>Password</p>
                     <input type="text" name="password" placeholder="Enter your password">
                     <div class="button">
                         <button type="submit">Log in</button>

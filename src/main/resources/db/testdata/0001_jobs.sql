@@ -1,6 +1,6 @@
-insert into Job (name) values ('Knippen');
-insert into Job (name) values ('Plukken');
-insert into Job (name) values ('Bloemen-Doorhalen');
-insert into Job (name) values ('Plastic');
-insert into Job (name) values ('Klippen');
-insert into Job (name) values ('Overige');
+insert into Job (name) values ('Plewienie');
+insert into Job (name) values ('Zbieranie');
+insert into Job (name) values ('Wyciąganie kwiatków');
+insert into Job (name) values ('Folia');
+insert into Job (name) values ('Zapinanie');
+insert into Job (name) values ('Inne');

@@ -14,7 +14,7 @@ public class HomeController {
 
     @GetMapping("/loginPage")
     public String home(){
-        return "loginPage";
+        return "login-form";
     }
 
     @PostMapping("/adminsPanel")
