@@ -9,6 +9,8 @@ public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
+    private String description;
 
     public Long getId() {
         return id;
@@ -33,9 +35,5 @@ public class UserRole {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    private String name;
-    private String description;
-
 
 }
