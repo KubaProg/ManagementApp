@@ -23,8 +23,8 @@ public class JobCycleController {
 
     @PostMapping("/save")
     public String sendDataToInfoPage(@RequestParam String jobName,
-                                     Model model,
-                                     RedirectAttributes redirectAttributes)
+                                     Model model
+                                     )
     {
         dataHolder.setJobName(jobName);
         return "redirect:/fieldsList";

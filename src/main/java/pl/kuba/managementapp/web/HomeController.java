@@ -12,11 +12,6 @@ public class HomeController {
         return "helloPage";
     }
 
-    @GetMapping("/loginPage")
-    public String home(){
-        return "login-form";
-    }
-
     @PostMapping("/adminsPanel")
     public String adminsPanel(){
         return "adminsPanel";

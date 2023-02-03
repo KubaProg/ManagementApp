@@ -16,11 +16,13 @@ form {
     justify-content: center;
 }
 
-button {
+a {
     padding: 10px 20px;
     background-color: lightgray;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    text-decoration: none;
+    color: black;
 }

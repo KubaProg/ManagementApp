@@ -18,7 +18,7 @@ public class JobController {
         this.jobService = jobService;
     }
 
-    @PostMapping("/jobList")
+    @GetMapping("/jobList")
     public String getJobList(Model model){
         List<Job> jobs = jobService.findAllJobs();
         model.addAttribute("jobs", jobs);

@@ -5,14 +5,10 @@
 </head>
 <body>
 <div class="employee">
-  <form th:action="@{/jobList}" method="post">
-    <button>Log in as employee</button>
-  </form>
+  <a th:href="@{/jobList}">Log in as employee</a>
 </div>
 <div class="admin">
-  <form th:action="@{/adminsPanel}" method="post">
-    <button>Log in as admin</button>
-  </form>
+  <a th:href="@{/adminsPanel}">Log in as admin</a>
 </div>
 </body>
 </html>

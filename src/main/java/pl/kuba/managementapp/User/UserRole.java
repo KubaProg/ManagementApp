@@ -3,7 +3,7 @@ package pl.kuba.managementapp.User;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name= "user-role")
+@Table(name= "user_role")
 public class UserRole {
 
     @Id

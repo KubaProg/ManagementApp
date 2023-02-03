@@ -1,25 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="pl" xmlns:sec="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
 <head>
     <meta charset="UTF-8">
     <title>Confirmation</title>
-    <style>
-        h1 {
-            font-family: Arial,sans-serif;
-            text-align: center;
-            font-size: 36px;
-            font-weight: bold;
-            margin-top: 50px;
-            background-color: green;
-            border-radius: 25px;
-            padding: 20px;
-            color:white;
-        }
-    </style>
+    <link rel="stylesheet" href="../static/styles/startPageStyles.css.css" th:href="@{styles/startPageStyles.css}">
 </head>
 <body>
 <h1 th:text="|You have started: ${jobName} on ${fieldName} at ${time}|">
     You have started job: Job1  at time: 12:00 at field: afd 1
 </h1>
+<div class="logout">
+    <a
+            sec:authorize="isAuthenticated()"
+            th:text="|Confirm and logout|"
+            th:href="@{/logout}">
+        Wyloguj sie chłopie
+    </a>
+</div>
 </body>
 </html>
