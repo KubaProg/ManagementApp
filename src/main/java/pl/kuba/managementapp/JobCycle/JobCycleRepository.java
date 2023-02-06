@@ -6,6 +6,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface JobCycleRepository extends CrudRepository<JobCycle, Long> {
 
-    JobCycle findJobCycleById(Long id);
+//    JobCycle findJobCycleById(Long id);
+
+     JobCycle findByJobId(Long id);
+
+    JobCycle findByUserIdAndEndTimeIsNull(Long id);
+
 
 }

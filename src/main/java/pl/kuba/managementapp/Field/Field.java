@@ -1,11 +1,9 @@
 package pl.kuba.managementapp.Field;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "Field")
 public class Field {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -8,4 +8,5 @@ public interface FieldRepository extends CrudRepository<Field,Long> {
 
     List<Field> findAll();
 
+    Field findByName(String fieldName);
 }

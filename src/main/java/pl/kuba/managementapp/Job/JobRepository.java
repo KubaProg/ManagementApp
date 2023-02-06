@@ -6,9 +6,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-interface JobRepository extends CrudRepository<Job, Long>
+public interface JobRepository extends CrudRepository<Job, Long>
 {
 
     List<Job> findAll();
+
+    Job findByName(String name);
 
 }

@@ -10,11 +10,10 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
     <include file="0002_create_table_field.xml" relativeToChangelogFile="true" />
     <include file="0003_create_table_employee.xml" relativeToChangelogFile="true" />
 
-
     <!-- TEST DATA -->
+    <include file="../testdata/data.sql" relativeToChangelogFile="true" context="dev"/>
     <include file="../testdata/0001_jobs.sql" relativeToChangelogFile="true" context="dev"/>
     <include file="../testdata/0002_fields.sql" relativeToChangelogFile="true" context="dev"/>
     <include file="../testdata/0003_job_cycle_employees.sql" relativeToChangelogFile="true" context="dev"/>
-    <include file="../testdata/data.sql" relativeToChangelogFile="true" context="dev"/>
 
 </databaseChangeLog>

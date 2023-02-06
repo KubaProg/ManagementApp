@@ -14,15 +14,12 @@ public class JobCycleService {
         this.jobCycleRepository = jobCycleRepository;
     }
 
-    JobCycle findJobCycleById(Long id){
-        return jobCycleRepository.findJobCycleById(id);
-    }
-
     public String getTime(){
         LocalTime currentTime = LocalTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         String timeString = currentTime.format(formatter);
         return timeString;
     }
+
 
 }
