@@ -1,7 +1,7 @@
 package pl.kuba.managementapp.JobCycle;
 import jakarta.persistence.*;
-import pl.kuba.managementapp.Employee.Employee;
 import pl.kuba.managementapp.Field.Field;
+import pl.kuba.managementapp.User.User;
 
 @Entity
 public class JobCycle {
@@ -11,8 +11,8 @@ public class JobCycle {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "employee_id", referencedColumnName = "id")
-    private Employee employee;
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User employee;
 
     @ManyToOne
     @JoinColumn(name = "field_id", referencedColumnName = "id")
@@ -28,6 +28,10 @@ public class JobCycle {
         this.startTime = startTime;
         this.endTime = endTime;
         this.jobName = status;
+    }
+
+    public JobCycle() {
+
     }
 
     public Long getId() {
