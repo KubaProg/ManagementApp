@@ -51,7 +51,6 @@ public class JobCycleController {
         model.addAttribute("time",time);
         model.addAttribute("jobName", jobName);
         return "jobEndPage";
-
     }
 
 

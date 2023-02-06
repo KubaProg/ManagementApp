@@ -12,14 +12,15 @@ public class HomeController {
         return "helloPage";
     }
 
-    @PostMapping("/adminsPanel")
+    @GetMapping("/adminsPanel")
     public String adminsPanel(){
         return "adminsPanel";
     }
 
     @GetMapping("/choice")
     public String choiceForm(){
-        return "choice-form";
+        return "choice-page";
     }
+
 
 }

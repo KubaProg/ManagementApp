@@ -16,12 +16,44 @@
       color:white;
     }
 
+    .logout {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50vh;
+        font-size: 32px;
+    }
+
+    a {
+        display: inline-block;
+        padding: 10px 15px;
+        text-decoration: none;
+        color: #333;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+        margin: 20px auto;
+    }
+
+    a:hover {
+        background-color: green;
+        color: white;
+        cursor: pointer;
+    }
+
   </style>
 </head>
 <body>
 <h1 th:text="|Job: ${jobName} finished at: ${time}|">
   Job: job1 finished at: 12:00:11
 </h1>
-
+<div class="logout">
+    <a
+            sec:authorize="isAuthenticated()"
+            th:text="|Confirm and logout|"
+            th:href="@{/logout}">
+        Wyloguj sie chłopie
+    </a>
+</div>
 </body>
 </html>

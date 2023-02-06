@@ -13,13 +13,14 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-class SecurityConfig implements WebMvcConfigurer {
+class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(requests -> requests
                 .requestMatchers("/", "/register", "/choice").permitAll()
                 .requestMatchers("/img/**", "/styles/**").permitAll()
-                .requestMatchers("/jobList", "/adminsPanel").hasAnyRole("USER","ADMIN")
+                .requestMatchers("/jobList").hasAnyRole("USER","ADMIN")
+                .requestMatchers("/adminsPanel/**").hasRole("ADMIN")
                 .requestMatchers(PathRequest.toH2Console()).permitAll()
                 .anyRequest().authenticated()
         );
