@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="0006-1" author="kuba">
+        <createTable tableName="job_cycle">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="start_time" type="varchar(255)"/>
+            <column name="end_time" type="varchar(255)"/>
+            <column name="job_id" type="BIGINT">
+                <constraints foreignKeyName="fk_jobCycle_job_id"
+                             referencedTableName="Job"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints foreignKeyName="fk_jobCycle_application_user"
+                             referencedTableName="application_user"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="field_id" type="BIGINT">
+                <constraints foreignKeyName="fk_jobCycle_field"
+                             referencedTableName="Field"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
+
+
