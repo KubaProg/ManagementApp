@@ -19,4 +19,8 @@ private final JobRepository jobRepository;
         return jobRepository.findAll();
     }
 
+    public Job findByName(String name){
+        return jobRepository.findByName(name);
+    }
+
 }

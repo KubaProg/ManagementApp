@@ -15,7 +15,7 @@
         <ul class="myUL" th:remove="all-but-first">
             <li th:each="field: ${fields}">
                 <a href="#">
-                    <form th:action="@{/save2}" method="post">
+                    <form th:action="@{/saveFieldAndTime}" method="post">
                         <button class="button" th:text="*{field.name}" th:value="*{field.name}" th:name="fieldName">
                             Job 1
                         </button>

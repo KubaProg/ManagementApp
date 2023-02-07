@@ -14,7 +14,7 @@
     <div class="list">
         <ul class="myUL" th:remove="all-but-first">
             <li th:each="job: ${jobs}">
-                        <form th:action="@{/save}" method="post">
+                        <form th:action="@{/saveJobAndUser}" method="post">
                         <button th:name="jobName" class="button" th:text="*{job.name}" th:value="*{job.name} " >
                             Job 1
                         </button>
@@ -28,7 +28,7 @@
                 </a>
             </li>
         </ul>
-        <form th:action="@{/end}" method="post">
+        <form th:action="@{/endWork}" method="post">
             <button class="einde-werk" >
                 Einde werk
             </button>

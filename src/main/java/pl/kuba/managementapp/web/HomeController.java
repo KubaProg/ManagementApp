@@ -12,11 +12,6 @@ public class HomeController {
         return "helloPage";
     }
 
-    @GetMapping("/adminsPanel")
-    public String adminsPanel(){
-        return "adminsPanel";
-    }
-
     @GetMapping("/choice")
     public String choiceForm(){
         return "choice-page";

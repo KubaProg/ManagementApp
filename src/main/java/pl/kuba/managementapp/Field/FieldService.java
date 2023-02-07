@@ -17,4 +17,8 @@ public class FieldService {
         return fieldRepository.findAll();
     }
 
+    public Field findByName(String name){
+        return fieldRepository.findByName(name);
+    }
+
 }

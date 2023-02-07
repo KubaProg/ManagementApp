@@ -13,6 +13,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
     Optional<User> findByEmail(String email);
 
     @Query("SELECT u.id FROM User u WHERE u.email = :email")
-    Long findIdByEmail(String email);
+    Optional<Long> findIdByEmail(String email);
 
 }

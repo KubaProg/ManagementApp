@@ -1,9 +1,11 @@
 package pl.kuba.managementapp.User;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.kuba.managementapp.User.dto.UserCredentialsDto;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -24,6 +26,16 @@ public class UserService {
     public Optional<UserCredentialsDto> findCredentialByEmail(String email){
         return userRepository.findByEmail(email)
                 .map(UserCredentialsDtoMapper::map);
+    }
+
+    public User findCurrentUser(){
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        return userRepository.findByEmail(email).orElseThrow(NoSuchElementException::new);
+    }
+
+    public Long findCurrentUserId(){
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        return userRepository.findIdByEmail(email).orElseThrow(NoSuchElementException::new);
     }
 
 
