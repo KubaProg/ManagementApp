@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <title>Weight form</title>
+    <link rel="stylesheet" href="/static/styles/weightFormStyles.css" th:href="@{/styles/weightFormStyles.css}">
+</head>
+<body>
+<div class="form-container">
+    <form method="post" action="/weight">
+        <label for="double-value">Weight in kilograms:</label>
+        <input type="number" step="0.01" id="double-value" name="weight" required />
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>

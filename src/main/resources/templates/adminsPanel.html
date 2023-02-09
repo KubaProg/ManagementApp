@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <title>Admin's Panel</title>
+    <link rel="stylesheet" href="../static/styles/adminsPanelStyles.css" th:href="@{/styles/adminsPanelStyles.css}">
 </head>
 <body>
-<h1>Admin's Panel</h1>
+<div class="hello center">
+    <span class="plant">Plant</span><span class="pro">Pro</span>
+</div>
+<section class="manage">
+    <a href="">
+        <div class="add">
+            <p>ADD EMPLOYEE</p>
+        </div>
+    </a>
+    <a href="">
+        <div class="delete">
+            <p>DELETE EMPLOYEE</p>
+        </div>
+    </a>
+</section>
+<section class="stats">
+    <a href="">
+        <div class="all">
+            <p>SHOW ALL EMOPLOYEES</p>
+        </div>
+    </a>
+    <a href="">
+        <div class="salaries">
+            <p>SHOW CURRENT EMPLOYEE SALARIES</p>
+        </div>
+    </a>
+</section>
 </body>
 </html>

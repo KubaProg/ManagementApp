@@ -7,30 +7,37 @@ import pl.kuba.managementapp.Field.FieldService;
 import pl.kuba.managementapp.Job.JobService;
 import pl.kuba.managementapp.JobCycle.JobCycle;
 import pl.kuba.managementapp.JobCycle.JobCycleService;
+import pl.kuba.managementapp.PickResult.PickResult;
+import pl.kuba.managementapp.PickResult.PickResultService;
 import pl.kuba.managementapp.User.User;
+import pl.kuba.managementapp.User.UserRepository;
 import pl.kuba.managementapp.User.UserService;
-import pl.kuba.managementapp.web.dataHolders.DataHolder;
 
 @Controller
 public class JobCycleController {
-    private final DataHolder dataHolder;
     private final JobCycle jobCycle;
+    private final PickResult pickResult;
     private final JobService jobService;
     private final FieldService fieldService;
-
     private final JobCycleService jobCycleService;
+    private final PickResultService pickResultService;
     private final UserService userService;
+    private final UserRepository userRepository;
 
-    public JobCycleController(JobCycleService jobCycleService, DataHolder dataHolder,
+    public JobCycleController(JobCycleService jobCycleService,
                               JobCycle jobCycle, JobService jobService,
-                              UserService userService, FieldService fieldService)
+                              UserService userService, FieldService fieldService,
+                              PickResult pickResult, PickResultService pickResultService,
+                              UserRepository userRepository)
     {
         this.jobCycleService = jobCycleService;
-        this.dataHolder = dataHolder;
         this.jobCycle = jobCycle;
         this.jobService = jobService;
         this.userService = userService;
         this.fieldService = fieldService;
+        this.pickResult = pickResult;
+        this.userRepository = userRepository;
+        this.pickResultService = pickResultService;
     }
 
     @PostMapping("/saveJobAndUser")
@@ -39,7 +46,11 @@ public class JobCycleController {
         User currentUser = userService.findCurrentUser();
         jobCycle.setUser(currentUser);
         jobCycle.setJob(jobService.findByName(jobName));
-        dataHolder.setJobName(jobName);
+
+        if(jobName.equals("Zbieranie")){
+            pickResult.setUser(userService.findCurrentUser());
+        }
+
         return "redirect:/fieldsList";
     }
 
@@ -48,13 +59,14 @@ public class JobCycleController {
                                       Model model)
     {
         String time = jobCycleService.getTime();
-        String jobName = dataHolder.getJobName();
         jobCycle.setStartTime(time);
         jobCycle.setField(fieldService.findByName(fieldName));
         model.addAttribute("fieldName", fieldName);
         model.addAttribute("time", time);
-        model.addAttribute("jobName", jobName);
+        model.addAttribute("jobName", jobCycle.getJob().getName());
         jobCycleService.saveJobCycle(jobCycle);
+        pickResult.setFieldName(fieldName);
+        pickResultService.savePickResult(pickResult);
         return "jobStartPage";
     }
 
@@ -64,10 +76,15 @@ public class JobCycleController {
         String time = jobCycleService.getTime();
         jobCycle.setEndTime(time);
         jobCycleService.saveJobCycle(jobCycle);
+
+        if(jobCycle.getJob().getName().equals("Zbieranie"))
+        {
+            return "weightForm";
+        }
+
         model.addAttribute("time",time);
         model.addAttribute("jobName", jobCycle.getJob().getName());
         return "jobEndPage";
     }
-
 
 }
