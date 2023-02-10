@@ -20,6 +20,13 @@ public class PickResult {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
+    public PickResult(Long id, String fieldName, User user)
+    {
+        this.id = id;
+        this.fieldName = fieldName;
+        this.user = user;
+    }
+
     public User getUser() {
         return user;
     }

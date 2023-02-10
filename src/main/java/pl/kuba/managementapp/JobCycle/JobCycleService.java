@@ -1,6 +1,10 @@
 package pl.kuba.managementapp.JobCycle;
 
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+import pl.kuba.managementapp.Field.Field;
+import pl.kuba.managementapp.Job.Job;
+import pl.kuba.managementapp.User.User;
 import pl.kuba.managementapp.User.UserService;
 
 import java.time.LocalTime;
@@ -25,6 +29,7 @@ public class JobCycleService {
         return timeString;
     }
 
+    @Transactional
     public void saveJobCycle(JobCycle jobCycle){
         jobCycleRepository.save(jobCycle);
     }
@@ -35,4 +40,7 @@ public class JobCycleService {
     }
 
 
+    public JobCycle createObject(Long id, String startTime, Job job, User user, Field field) {
+        return new JobCycle(id,startTime,job,user,field);
+    }
 }

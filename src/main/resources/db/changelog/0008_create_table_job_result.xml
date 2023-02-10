@@ -5,16 +5,17 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet id="0007-1" author="kuba">
-        <createTable tableName="pick_result">
+    <changeSet id="0008-1" author="Jakub Opiełka">
+        <createTable tableName="job_result">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="job_name" type="varchar(255)"/>
             <column name="field_name" type="varchar(255)"/>
-            <column name="weight" type="double"/>
+            <column name="hours" type="double"/>
             <column name = "money" type="double" />
             <column name="user_id" type="BIGINT">
-                <constraints foreignKeyName="fk_pickResult_user_id"
+                <constraints foreignKeyName="fk_job_result_user_id"
                              referencedTableName="application_user"
                              referencedColumnNames="id"/>
             </column>

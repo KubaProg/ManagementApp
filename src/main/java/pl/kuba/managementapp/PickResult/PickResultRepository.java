@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PickResultRepository extends CrudRepository<PickResult, Long> {
 
-
+PickResult findPickResultByIdAndWeightIsNull(Long id);
 
 }

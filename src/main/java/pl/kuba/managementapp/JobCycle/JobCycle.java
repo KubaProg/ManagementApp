@@ -37,6 +37,13 @@ public class JobCycle {
         this.field = field;
     }
 
+    public JobCycle(Long id, String startTime, Job job, User user, Field field) {
+        this.id = id;
+        this.startTime = startTime;
+        this.job = job;
+        this.user = user;
+        this.field = field;
+    }
 
     public Job getJob() {
         return job;
