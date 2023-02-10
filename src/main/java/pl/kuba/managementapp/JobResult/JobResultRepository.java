@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 public interface JobResultRepository extends CrudRepository<JobResult, Long> {
 
 
-
+    JobResult findJobResultByUserIdAndHoursIsNull(Long currentUserId);
 }

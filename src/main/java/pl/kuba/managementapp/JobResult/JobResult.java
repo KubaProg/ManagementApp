@@ -19,6 +19,17 @@ public class JobResult {
     @JoinColumn(name = "user_id" , referencedColumnName = "id")
     User user;
 
+    public JobResult(Long id, String jobName, String fieldName, User user) {
+        this.id = id;
+        this.jobName = jobName;
+        this.fieldName = fieldName;
+        this.user = user;
+    }
+
+    public JobResult() {
+
+    }
+
     public Long getId() {
         return id;
     }

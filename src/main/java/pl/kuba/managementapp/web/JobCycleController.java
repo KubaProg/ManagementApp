@@ -1,15 +1,14 @@
 package pl.kuba.managementapp.web;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.kuba.managementapp.Field.FieldService;
-import pl.kuba.managementapp.Job.Job;
 import pl.kuba.managementapp.Job.JobService;
 import pl.kuba.managementapp.JobCycle.JobCycle;
 import pl.kuba.managementapp.JobCycle.JobCycleService;
 import pl.kuba.managementapp.JobResult.JobResult;
+import pl.kuba.managementapp.JobResult.JobResultService;
 import pl.kuba.managementapp.PickResult.PickResult;
 import pl.kuba.managementapp.PickResult.PickResultService;
 import pl.kuba.managementapp.User.User;
@@ -26,13 +25,14 @@ public class JobCycleController {
     private final JobCycleService jobCycleService;
     private final PickResultService pickResultService;
     private final UserService userService;
-    private final UserRepository userRepository;
+    private final JobResultService jobResultService;
 
     public JobCycleController(JobCycleService jobCycleService,
                                JobService jobService, JobCycle jobCycle,
                               UserService userService, FieldService fieldService,
                               PickResult pickResult, PickResultService pickResultService,
-                              UserRepository userRepository, JobResult jobResult)
+                              UserRepository userRepository, JobResult jobResult,
+                              JobResultService jobResultService)
     {
         this.jobCycleService = jobCycleService;
         this.jobCycle = jobCycle;
@@ -40,7 +40,7 @@ public class JobCycleController {
         this.userService = userService;
         this.fieldService = fieldService;
         this.pickResult = pickResult;
-        this.userRepository = userRepository;
+        this.jobResultService = jobResultService;
         this.pickResultService = pickResultService;
         this.jobResult = jobResult;
     }
@@ -75,16 +75,25 @@ public class JobCycleController {
                 jobCycle.getField());
         jobCycleService.saveJobCycle(jobCycleToSave);
 
-        pickResult.setFieldName(fieldName);
-
+        //Saving PickResult object to db
         if(jobCycle.getJob().getName().equals("Zbieranie"))
         {
-            //Saving PickResult object to db
+            pickResult.setFieldName(fieldName);
             PickResult pickResultToSave = pickResultService.createObject(
                     pickResult.getId(),
                     pickResult.getFieldName(),
                     pickResult.getUser());
             pickResultService.savePickResult(pickResultToSave);
+        } // Saving JobResult ( different from picking )
+        else{
+            jobResult.setFieldName(fieldName);
+            JobResult jobResultToSave = jobResultService.createObject(
+                    jobResult.getId(),
+                    jobResult.getJobName(),
+                    jobResult.getFieldName(),
+                    jobResult.getUser()
+            );
+            jobResultService.saveJobResult(jobResultToSave);
         }
 
         model.addAttribute("fieldName", fieldName);
@@ -104,6 +113,10 @@ public class JobCycleController {
         if(jobCycle.getJob().getName().equals("Zbieranie"))
         {
             return "weightForm";
+        }else{
+            JobResult jobResult = jobResultService.findRecentJobResult(userService.findCurrentUserId());
+            JobResult jobResultToSave = jobResultService.countTimeAndMoney(jobResult, userService.findCurrentUserId());
+            jobResultService.saveJobResult(jobResultToSave);
         }
 
         model.addAttribute("time",time);
