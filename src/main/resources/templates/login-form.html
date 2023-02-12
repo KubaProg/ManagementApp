@@ -13,7 +13,7 @@
     <div class="form">
         <div class="userForm">
             <h2>Log in as User</h2>
-            <form th:action="@{/login}" class="userLoggingForm" method="post">
+            <form th:action="@{/login}" class="userLoggingForm" method="post" th:object="${user}">
                 <div class="input">
                     <p>Login</p>
                     <input type="text" name="username" placeholder="Enter your username">

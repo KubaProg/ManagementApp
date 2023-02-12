@@ -30,6 +30,6 @@ public class PickResultService {
     }
 
     public PickResult findRecentPickResult(Long currentUserId) {
-        return pickResultRepository.findPickResultByIdAndWeightIsNull(currentUserId);
+        return pickResultRepository.findPickResultByUserIdAndWeightIsNull(currentUserId);
     }
 }
