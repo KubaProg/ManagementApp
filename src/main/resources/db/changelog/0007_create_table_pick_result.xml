@@ -16,7 +16,9 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
             <column name="user_id" type="BIGINT">
                 <constraints foreignKeyName="fk_pickResult_user_id"
                              referencedTableName="application_user"
-                             referencedColumnNames="id"/>
+                             referencedColumnNames="id"
+                             deleteCascade="true"
+                />
             </column>
         </createTable>
     </changeSet>

@@ -1,5 +1,6 @@
 package pl.kuba.managementapp.User;
 
+import jakarta.transaction.Transactional;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,9 @@ public class UserService {
         return userRepository.findIdByEmail(email).orElseThrow(NoSuchElementException::new);
     }
 
-
+    @Transactional
+    public void deleteUserByEmail(String email){
+        userRepository.deleteByEmail(email);
+    }
 
 }

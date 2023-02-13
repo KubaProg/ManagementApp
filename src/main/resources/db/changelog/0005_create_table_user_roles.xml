@@ -20,7 +20,8 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
                 <constraints nullable="false"
                              foreignKeyName="fk_user_roles_user"
                              referencedTableName="application_user"
-                             referencedColumnNames="id"/>
+                             referencedColumnNames="id"
+                             deleteCascade="true"/>
             </column>
         </createTable>
     </changeSet>

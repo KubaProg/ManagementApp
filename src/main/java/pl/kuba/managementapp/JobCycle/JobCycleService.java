@@ -39,7 +39,8 @@ public class JobCycleService {
 
     public JobCycle findRecentlyStartedJobCycle(){
         Long currentUserId = userService.findCurrentUserId();
-        return jobCycleRepository.findByUserIdAndEndTimeIsNull(currentUserId).orElseThrow(NoSuchElementException::new);
+        Optional<JobCycle> optionalJobCycle = jobCycleRepository.findByUserIdAndEndTimeIsNull(currentUserId);
+        return optionalJobCycle.orElse(null);
     }
 
     public JobCycle createObject(Long id, String startTime, Job job, User user, Field field) {

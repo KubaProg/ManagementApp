@@ -15,4 +15,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Query("SELECT u.id FROM User u WHERE u.email = :email")
     Optional<Long> findIdByEmail(String email);
 
+    public void deleteByEmail(String email);
+
 }

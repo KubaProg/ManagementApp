@@ -28,11 +28,13 @@
                 </a>
             </li>
         </ul>
-        <form th:action="@{/endWork}" method="post">
-            <button class="einde-werk" >
-                Einde werk
-            </button>
-        </form>
+        <div th:if="${jobCycle != null}">
+            <form th:action="@{/endWork}" method="post">
+                <button class="einde-werk" >
+                    Einde werk
+                </button>
+            </form>
+        </div>
     </div>
 </main>
 <footer>

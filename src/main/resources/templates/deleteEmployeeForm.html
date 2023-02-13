@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>add employee</title>
+    <link rel="stylesheet" href="../static/styles/addEmployeeFormStyles.css" th:href="@{/styles/addEmployeeFormStyles.css}">
+</head>
+<body>
+<form action="/delete" th:action="@{/delete}" method="post" th:object="${user}">
+    <label for="email">Email:</label>
+    <input th:field="*{email}"  type="email" id="email" name="email" required />
+    <input type="submit" value="Submit" />
+</form>
+</body>
+</html>
