@@ -7,12 +7,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pl.kuba.managementapp.JobCycle.JobCycle;
 import pl.kuba.managementapp.JobCycle.JobCycleService;
 import pl.kuba.managementapp.PickResult.PickResult;
-import pl.kuba.managementapp.PickResult.PickResultRepository;
 import pl.kuba.managementapp.PickResult.PickResultService;
-import pl.kuba.managementapp.User.User;
+import pl.kuba.managementapp.Salary.SalaryService;
 import pl.kuba.managementapp.User.UserService;
-
-import java.time.LocalTime;
 
 @Controller
 public class PickResultController {
@@ -22,17 +19,19 @@ public class PickResultController {
     private final JobCycleService jobCycleService;
     private final PickResultService pickResultService;
     private final UserService userService;
+    private final SalaryService salaryService;
 
     public PickResultController(PickResult pickResult,
                                 JobCycleService jobCycleService,
                                 PickResultService pickResultService,
                                 UserService userService,
-                                JobCycle jobCycle) {
+                                JobCycle jobCycle, SalaryService salaryService) {
         this.pickResult = pickResult;
         this.jobCycleService = jobCycleService;
         this.pickResultService = pickResultService;
         this.userService = userService;
         this.jobCycle = jobCycle;
+        this.salaryService = salaryService;
     }
 
     @PostMapping("/weight")
@@ -44,6 +43,9 @@ public class PickResultController {
 
     model.addAttribute("jobName", "Picking");
     model.addAttribute("time", jobCycleService.getTime());
+
+    salaryService.updateSalary();
+
     return "jobEndPage";
     }
 

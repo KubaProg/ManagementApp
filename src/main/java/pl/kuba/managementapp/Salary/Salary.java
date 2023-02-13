@@ -10,15 +10,12 @@ public class Salary {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Double value;
+    private Double salary_value;
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    public Salary(Double value, User user) {
-        this.value = value;
-        this.user = user;
-    }
+    public Salary() {}
 
     public Long getId() {
         return id;
@@ -28,12 +25,12 @@ public class Salary {
         this.id = id;
     }
 
-    public Double getValue() {
-        return value;
+    public Double getSalary_value() {
+        return salary_value;
     }
 
-    public void setValue(Double value) {
-        this.value = value;
+    public void setSalary_value(Double salary_value) {
+        this.salary_value = salary_value;
     }
 
     public User getUser() {

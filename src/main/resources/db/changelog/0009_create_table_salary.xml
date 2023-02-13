@@ -10,7 +10,7 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="value" type="double"/>
+            <column name="salary_value" type="double"/>
             <column name="user_id" type="BIGINT">
                 <constraints foreignKeyName="fk_salary_user_id"
                              referencedTableName="application_user"

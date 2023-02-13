@@ -43,7 +43,17 @@ public class SalaryService {
                 .reduce(0.0, Double::sum);
         Double sum = jobResultsMoney+pickResultsMoney;
 
-       salaryRepository.save(new Salary(sum,user)); // NIE ZAPISUJE SIE Z JAKICHS POWODOW
+        Salary salary = salaryRepository.findByUserId(id).orElse(null);
+        if (salary == null) {
+            salary = new Salary();
+            salary.setUser(user);
+        }
+        salary.setSalary_value(sum);
+        salaryRepository.save(salary);
+    }
+
+    public List<Salary> findAllSalaries(){
+        return salaryRepository.findAll();
     }
 
 }
