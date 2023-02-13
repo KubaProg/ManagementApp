@@ -11,6 +11,7 @@ import pl.kuba.managementapp.JobResult.JobResult;
 import pl.kuba.managementapp.JobResult.JobResultService;
 import pl.kuba.managementapp.PickResult.PickResult;
 import pl.kuba.managementapp.PickResult.PickResultService;
+import pl.kuba.managementapp.Salary.SalaryService;
 import pl.kuba.managementapp.User.User;
 import pl.kuba.managementapp.User.UserRepository;
 import pl.kuba.managementapp.User.UserService;
@@ -26,13 +27,14 @@ public class JobCycleController {
     private final PickResultService pickResultService;
     private final UserService userService;
     private final JobResultService jobResultService;
+    private final SalaryService salaryService;
 
     public JobCycleController(JobCycleService jobCycleService,
-                               JobService jobService, JobCycle jobCycle,
+                              JobService jobService, JobCycle jobCycle,
                               UserService userService, FieldService fieldService,
                               PickResult pickResult, PickResultService pickResultService,
                               UserRepository userRepository, JobResult jobResult,
-                              JobResultService jobResultService)
+                              JobResultService jobResultService, SalaryService salaryService)
     {
         this.jobCycleService = jobCycleService;
         this.jobCycle = jobCycle;
@@ -43,6 +45,7 @@ public class JobCycleController {
         this.jobResultService = jobResultService;
         this.pickResultService = pickResultService;
         this.jobResult = jobResult;
+        this.salaryService = salaryService;
     }
 
     @PostMapping("/saveJobAndUser")
@@ -118,6 +121,8 @@ public class JobCycleController {
             JobResult jobResultToSave = jobResultService.countTimeAndMoney(jobResult, userService.findCurrentUserId());
             jobResultService.saveJobResult(jobResultToSave);
         }
+
+        salaryService.updateSalary();
 
         model.addAttribute("time",time);
         model.addAttribute("jobName", jobCycle.getJob().getName());

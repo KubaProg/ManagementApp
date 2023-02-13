@@ -5,8 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pl.kuba.managementapp.Salary.SalaryService;
 import pl.kuba.managementapp.User.User;
-import pl.kuba.managementapp.User.UserRepository;
 import pl.kuba.managementapp.User.UserRole;
 import pl.kuba.managementapp.User.UserService;
 
@@ -17,11 +17,12 @@ public class AdminController {
 
     private final AdminService adminService;
     private final UserService userService;
-
+    private final SalaryService salaryService;
     public AdminController(AdminService adminService,
-                           UserService userService) {
+                           UserService userService, SalaryService salaryService) {
         this.adminService = adminService;
         this.userService = userService;
+        this.salaryService = salaryService;
     }
 
     @GetMapping("/adminsPanel")

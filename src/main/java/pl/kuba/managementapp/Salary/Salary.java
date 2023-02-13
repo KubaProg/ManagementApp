@@ -15,6 +15,11 @@ public class Salary {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
+    public Salary(Double value, User user) {
+        this.value = value;
+        this.user = user;
+    }
+
     public Long getId() {
         return id;
     }
