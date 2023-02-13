@@ -1,10 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Fields list</title>
+    <link rel="stylesheet" href="../static/styles/employeeListStyles.css" th:href="@{styles/employeeListStyles.css}">
 </head>
 <body>
+<main>
+    <div>
+        <h1>
+            Employees list
+        </h1>
+    </div>
+    <div class="list">
+        <div class="pattern">
+            <p> Name:  | Surname:  |  Email:  </p>
+        </div>
+        <ul class="myUL" th:remove="all-but-first">
+            <li th:each="employee: ${employeesList}">
+                <div>
+                    <p th:text="*{'Name: ' + employee.first_name + ' | Surname: ' + employee.last_name + ' |  Email: ' + employee.email}">
+                        Dane 1
+                    </p>
+                </div>
+            </li>
+            <li>
+               <div>
+                   <p>
+                       Dane 2
+                   </p>
+               </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</main>
 
 </body>
 </html>

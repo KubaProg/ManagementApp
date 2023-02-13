@@ -10,17 +10,17 @@ import pl.kuba.managementapp.User.UserRepository;
 import pl.kuba.managementapp.User.UserRole;
 import pl.kuba.managementapp.User.UserService;
 
+import java.util.List;
+
 @Controller
 public class AdminController {
 
     private final AdminService adminService;
-    private final UserRepository userRepository;
     private final UserService userService;
 
     public AdminController(AdminService adminService,
-                           UserRepository userRepository, UserService userService) {
+                           UserService userService) {
         this.adminService = adminService;
-        this.userRepository = userRepository;
         this.userService = userService;
     }
 
@@ -62,6 +62,13 @@ public class AdminController {
     String deleteForm(User user) {
         userService.deleteUserByEmail(user.getEmail());
         return "redirect:/confirmation";
+    }
+
+    @GetMapping("/showAll")
+    String showEmployees(Model model){
+        List<User> employeesList = userService.findAllEmployees();
+        model.addAttribute("employeesList", employeesList);
+        return "employeeList";
     }
 
 }

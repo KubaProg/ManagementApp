@@ -6,8 +6,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.kuba.managementapp.User.dto.UserCredentialsDto;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -43,5 +45,14 @@ public class UserService {
     public void deleteUserByEmail(String email){
         userRepository.deleteByEmail(email);
     }
+
+    public List<User> findAllEmployees(){
+        List<User> allUsers = userRepository.findAll();
+        return allUsers.stream()
+                .filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("USER")))
+                .toList();
+    }
+
+
 
 }
