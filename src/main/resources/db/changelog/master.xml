@@ -14,7 +14,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
     <include file="0006_create_table_job_cycle.xml" relativeToChangelogFile="true" />
     <include file="0007_create_table_pick_result.xml" relativeToChangelogFile="true" />
     <include file="0008_create_table_job_result.xml" relativeToChangelogFile="true" />
-
+    <include file="0009_create_table_salary.xml" relativeToChangelogFile="true" />
 
     <!-- TEST DATA -->
     <include file="../testdata/0004_users_roles.sql" relativeToChangelogFile="true" context="dev"/>

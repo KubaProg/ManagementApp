@@ -64,11 +64,18 @@ public class AdminController {
         return "redirect:/confirmation";
     }
 
-    @GetMapping("/showAll")
+    @GetMapping("/showAllEmployees")
     String showEmployees(Model model){
         List<User> employeesList = userService.findAllEmployees();
         model.addAttribute("employeesList", employeesList);
         return "employeeList";
+    }
+
+    @GetMapping("/showAllSalaries")
+    String showSalaries(Model model){
+        List<User> employeesList = userService.findAllEmployees();
+        model.addAttribute("employeesList", employeesList);
+        return "employeeSalariesList";
     }
 
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="0009-1" author="Jakub Opiełka">
+        <createTable tableName="salary">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="value" type="double"/>
+            <column name="user_id" type="BIGINT">
+                <constraints foreignKeyName="fk_salary_user_id"
+                             referencedTableName="application_user"
+                             referencedColumnNames="id"
+                             deleteCascade="true"
+                />
+            </column>
+        </createTable>
+    </changeSet>
+
+
+
+</databaseChangeLog>
+
+

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../static/styles/adminsPanelStyles.css" th:href="@{/styles/adminsPanelStyles.css}">
 </head>
 <body>
-<div class="hello center">
+<div class="hello">
     <span class="plant">Plant</span><span class="pro">Pro</span>
 </div>
 <section class="manage">
@@ -22,12 +22,12 @@
     </a>
 </section>
 <section class="stats">
-    <a th:href="@{/showAll}">
+    <a th:href="@{/showAllEmployees}">
         <div class="all">
             <p>SHOW ALL EMOPLOYEES</p>
         </div>
     </a>
-    <a href="">
+    <a th:href="@{/showAllSalaries}">
         <div class="salaries">
             <p>SHOW CURRENT EMPLOYEE SALARIES</p>
         </div>
