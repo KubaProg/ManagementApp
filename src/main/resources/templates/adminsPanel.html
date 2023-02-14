@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" xmlns:sec="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
 <head>
     <meta charset="UTF-8">
     <title>Admin's Panel</title>
@@ -33,5 +35,10 @@
         </div>
     </a>
 </section>
+<div class="logout">
+    <button sec:authorize="isAuthenticated()">
+        <a th:href="@{/logout}">Log out</a>
+    </button>
+</div>
 </body>
 </html>
