@@ -21,6 +21,7 @@ class SecurityConfig {
                 .requestMatchers("/img/**", "/styles/**").permitAll()
                 .requestMatchers("/jobList").hasAnyRole("USER","ADMIN")
                 .requestMatchers("/adminsPanel/**").hasRole("ADMIN")
+                .requestMatchers("/pickResults").permitAll()
                 .requestMatchers(PathRequest.toH2Console()).permitAll()
                 .anyRequest().authenticated()
         );

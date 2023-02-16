@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import pl.kuba.managementapp.User.User;
 
 import java.text.DecimalFormat;
+import java.util.List;
 
 @Service
 public class PickResultService {
@@ -32,4 +33,12 @@ public class PickResultService {
     public PickResult findRecentPickResult(Long currentUserId) {
         return pickResultRepository.findPickResultByUserIdAndWeightIsNull(currentUserId);
     }
+
+    public List<PickResultDto> getAll(){
+        return pickResultRepository.findAll()
+                .stream()
+                .map(PickResultDtoMapper::map)
+                .toList();
+    }
+
 }

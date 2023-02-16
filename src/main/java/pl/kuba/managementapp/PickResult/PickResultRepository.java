@@ -12,4 +12,6 @@ public interface PickResultRepository extends CrudRepository<PickResult, Long> {
 
     List<PickResult> findAllByUserId(Long id);
 
+    List<PickResult> findAll();
+
 }
