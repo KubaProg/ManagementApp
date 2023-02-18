@@ -10,4 +10,5 @@ public interface JobResultRepository extends CrudRepository<JobResult, Long> {
 
     List<JobResult> findAllByUserId(Long id);
     JobResult findJobResultByUserIdAndHoursIsNull(Long currentUserId);
+    List<JobResult> findAll();
 }

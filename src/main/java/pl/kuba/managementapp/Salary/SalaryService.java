@@ -52,6 +52,12 @@ public class SalaryService {
         salaryRepository.save(salary);
     }
 
+    public List<SalaryDto> findAll(){
+        return salaryRepository.findAll().stream()
+                .map(SalaryDtoMapper::map)
+                .toList();
+    }
+
     public List<Salary> findAllSalaries(){
         return salaryRepository.findAll();
     }

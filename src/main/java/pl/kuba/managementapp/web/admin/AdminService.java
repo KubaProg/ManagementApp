@@ -22,10 +22,11 @@ public class AdminService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void saveUser(User user){
+    public User saveUser(User user){
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
         userRepository.save(user);
+        return user;
     }
 
     public UserRole findRoleByName(String name){

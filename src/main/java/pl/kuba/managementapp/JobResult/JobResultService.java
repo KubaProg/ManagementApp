@@ -12,6 +12,7 @@ import java.text.DecimalFormat;
 import java.text.Format;
 import java.time.Duration;
 import java.time.LocalTime;
+import java.util.List;
 
 @Service
 public class JobResultService {
@@ -60,6 +61,13 @@ public class JobResultService {
     public Double countMoney(Double hours){
         String formatted = decimalFormat.format(hours * 11.5);
         return Double.parseDouble(formatted);
+    }
+
+    public List<JobResultDto> getAllJobResults(){
+        return jobResultRepository.findAll()
+                .stream()
+                .map(JobResultDtoMapper::map)
+                .toList();
     }
 
 

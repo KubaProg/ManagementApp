@@ -25,7 +25,9 @@ public class UserService {
         this.userRoleRepository = userRoleRepository;
         this.passwordEncoder = passwordEncoder;
     }
-
+    public Optional<User> findUserByEmail(String email){
+        return userRepository.findByEmail(email);
+    }
     public Optional<UserCredentialsDto> findCredentialByEmail(String email){
         return userRepository.findByEmail(email)
                 .map(UserCredentialsDtoMapper::map);

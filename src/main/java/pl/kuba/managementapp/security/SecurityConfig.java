@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
@@ -21,7 +22,8 @@ class SecurityConfig {
                 .requestMatchers("/img/**", "/styles/**").permitAll()
                 .requestMatchers("/jobList").hasAnyRole("USER","ADMIN")
                 .requestMatchers("/adminsPanel/**").hasRole("ADMIN")
-                .requestMatchers("/pickResults").permitAll()
+                .requestMatchers("/api/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/**").permitAll()
                 .requestMatchers(PathRequest.toH2Console()).permitAll()
                 .anyRequest().authenticated()
         );
