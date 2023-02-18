@@ -44,7 +44,7 @@ public class PickResultController {
     model.addAttribute("jobName", "Picking");
     model.addAttribute("time", jobCycleService.getTime());
 
-    salaryService.updateSalary();
+    salaryService.increaseSalary();
 
     return "jobEndPage";
     }

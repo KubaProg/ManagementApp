@@ -9,28 +9,29 @@ import pl.kuba.managementapp.PickResult.PickResultRepository;
 import pl.kuba.managementapp.User.User;
 import pl.kuba.managementapp.User.UserService;
 
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Service
 public class SalaryService {
 
-    PickResultRepository pickResultRepository;
-    JobResultRepository jobResultRepository;
-    UserService userService;
+    private final PickResultRepository pickResultRepository;
+    private final JobResultRepository jobResultRepository;
+    private final UserService userService;
     private final SalaryRepository salaryRepository;
+    private final SalaryDtoMapper salaryDtoMapper;
 
     public SalaryService(PickResultRepository pickResultRepository, JobResultRepository jobResultRepository, UserService userService,
-                         SalaryRepository salaryRepository) {
+                         SalaryRepository salaryRepository, SalaryDtoMapper salaryDtoMapper) {
         this.pickResultRepository = pickResultRepository;
         this.jobResultRepository = jobResultRepository;
         this.userService = userService;
         this.salaryRepository = salaryRepository;
+        this.salaryDtoMapper = salaryDtoMapper;
     }
 
     @Transactional
-    public void updateSalary(){
+    public void increaseSalary(){
         Long id = userService.findCurrentUserId();
         User user = userService.findCurrentUser();
         List<JobResult> jobResults = jobResultRepository.findAllByUserId(id);
@@ -54,7 +55,7 @@ public class SalaryService {
 
     public List<SalaryDto> findAll(){
         return salaryRepository.findAll().stream()
-                .map(SalaryDtoMapper::map)
+                .map(salaryDtoMapper::map)
                 .toList();
     }
 
@@ -62,4 +63,12 @@ public class SalaryService {
         return salaryRepository.findAll();
     }
 
+    public Optional<SalaryDto> getSalaryById(Long id) {
+        return salaryRepository.findById(id).map(salaryDtoMapper::map);
+    }
+
+    public void updateSalary(SalaryDto salaryDto) {
+        Salary salary = salaryDtoMapper.map(salaryDto);
+        salaryRepository.save(salary);
+    }
 }

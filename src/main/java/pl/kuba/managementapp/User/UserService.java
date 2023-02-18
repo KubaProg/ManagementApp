@@ -55,6 +55,7 @@ public class UserService {
                 .toList();
     }
 
-
-
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElseThrow();
+    }
 }

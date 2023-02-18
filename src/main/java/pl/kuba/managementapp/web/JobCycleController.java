@@ -122,7 +122,7 @@ public class JobCycleController {
             jobResultService.saveJobResult(jobResultToSave);
         }
 
-        salaryService.updateSalary();
+        salaryService.increaseSalary();
 
         model.addAttribute("time",time);
         model.addAttribute("jobName", jobCycle.getJob().getName());
