@@ -47,6 +47,10 @@ body {
     margin-top: 20px;
 }
 
+.logout button{
+    font-size: 4vh;
+}
+
 button {
     background-color: red;
     color: white;

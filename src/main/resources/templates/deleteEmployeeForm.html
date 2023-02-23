@@ -5,9 +5,10 @@
     <link rel="stylesheet" href="../static/styles/addEmployeeFormStyles.css" th:href="@{/styles/addEmployeeFormStyles.css}">
 </head>
 <body>
-<form action="/delete" th:action="@{/delete}" method="post" th:object="${user}">
+<form action="/delete" th:action="@{/delete}" method="post">
     <label for="email">Email:</label>
-    <input th:field="*{email}"  type="email" id="email" name="email" required />
+    <input type="email" id="email" name="email"  />
+    <p th:if="${exists}" th:text="${'Given email does not exist'}"></p>
     <input type="submit" value="Submit" />
 </form>
 </body>

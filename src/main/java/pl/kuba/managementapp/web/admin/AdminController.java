@@ -69,9 +69,22 @@ public class AdminController {
     }
 
     @PostMapping("/delete")
-    String deleteForm(User user) {
-        userService.deleteUserByEmail(user.getEmail());
-        return "delete-confirmation";
+    String deleteForm(@RequestParam String email,
+                      Model model) {
+//        if(bindingResult.hasErrors()){
+//            return "deleteEmployeeForm";
+//        }else{
+//            userService.deleteUserByEmail(user.getEmail());
+//            return "delete-confirmation";
+//        }
+        boolean emailExists = userService.checkIfUserExistByEmail(email);
+        if(emailExists){
+            userService.deleteUserByEmail(email);
+            return "delete-confirmation";
+        }else{
+            model.addAttribute("exists", true);
+            return "deleteEmployeeForm";
+        }
     }
 
     @GetMapping("/showAllEmployees")
