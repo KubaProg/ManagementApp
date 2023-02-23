@@ -1,6 +1,10 @@
 package pl.kuba.managementapp.User;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,9 +16,18 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank(message = "First Name can not be blank")
+    @Size(min= 2, max = 20, message = "First Name size must be between 2 and 20 characters")
     private String first_name;
+    @NotBlank(message = "Last Name can not be blank")
+    @Size(min= 2, max = 20, message = "Last Name size must be between 2 and 20 characters")
     private String last_name;
+    @NotBlank(message = "Email can not be blank")
+    @Email(message = "This is incorrect email, check it ")
+    @Size(min = 5, max = 100 , message = "Email size must be between 2 and 20 characters")
     private String email;
+    @NotBlank(message = "Password can not be blank")
+    @Size(min=4, max=50, message = "Password size must be between 4 and 50 characters")
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)

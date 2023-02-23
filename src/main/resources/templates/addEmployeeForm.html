@@ -7,13 +7,17 @@
 <body>
 <form action="/add" th:action="@{/add}" method="post" th:object="${user}">
     <label for="first_name">First Name:</label>
-    <input th:field="*{first_name}" type="text" id="first_name" name="first_name" required />
+    <input th:field="*{first_name}" type="text" id="first_name" name="first_name"  />
+    <p th:errors="*{first_name}" class="error">Błędy związane z imieniem</p>
     <label for="last_name">Last Name:</label>
-    <input th:field="*{last_name}" type="text" id="last_name" name="last_name" required />
+    <input th:field="*{last_name}" type="text" id="last_name" name="last_name" />
+    <p th:errors="*{last_name}" class="error">Błędy związane z imieniem</p>
     <label for="email">Email:</label>
-    <input th:field="*{email}"  type="email" id="email" name="email" required />
+    <input th:field="*{email}"  type="email" id="email" name="email"  />
+    <p th:errors="*{email}" class="error">Błędy związane z imieniem</p>
     <label for="password">Password:</label>
-    <input th:field="*{password}" type="password" id="password" name="password" required />
+    <input th:field="*{password}" type="password" id="password" name="password"  />
+    <p th:errors="*{password}" class="error">Błędy związane z imieniem</p>
     <label for="role">Role:</label>
     <select id="role" name="role">
         <option value="ADMIN">Admin</option>

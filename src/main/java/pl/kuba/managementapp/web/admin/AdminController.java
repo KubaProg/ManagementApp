@@ -1,8 +1,11 @@
 package pl.kuba.managementapp.web.admin;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.kuba.managementapp.Salary.Salary;
@@ -39,12 +42,17 @@ public class AdminController {
     }
 
     @PostMapping("/add")
-    String register(User user,
+    String register(@Valid @ModelAttribute("user") User user,
+                    BindingResult bindingResult,
                     @RequestParam String role){
-        UserRole properRole = adminService.findRoleByName(role);
-        user.getRoles().add(properRole);
-        adminService.saveUser(user);
-        return "redirect:/confirmation";
+        if(bindingResult.hasErrors()){
+            return "addEmployeeForm";
+        }else{
+            UserRole properRole = adminService.findRoleByName(role);
+            user.getRoles().add(properRole);
+            adminService.saveUser(user);
+            return "redirect:/confirmation";
+        }
     }
 
     @GetMapping("/confirmation")
@@ -63,7 +71,7 @@ public class AdminController {
     @PostMapping("/delete")
     String deleteForm(User user) {
         userService.deleteUserByEmail(user.getEmail());
-        return "redirect:/confirmation";
+        return "delete-confirmation";
     }
 
     @GetMapping("/showAllEmployees")

@@ -86,6 +86,12 @@ public class ApiController {
         }
     }
 
+    @DeleteMapping("user/{id}")
+    ResponseEntity<?> deleteUser(@PathVariable Long id){
+        userService.deleteUser(id);
+        return ResponseEntity.noContent().build();
+    }
+
     @PatchMapping("/salary/{id}")
     ResponseEntity<?> updateSalary(@PathVariable Long id, @RequestBody JsonMergePatch patch){
         try {
@@ -106,6 +112,8 @@ public class ApiController {
         JsonNode salaryPatchedNode = patch.apply(salaryNode);
         return objectMapper.treeToValue(salaryPatchedNode, SalaryDto.class);
     }
+
+
 
 
 }
