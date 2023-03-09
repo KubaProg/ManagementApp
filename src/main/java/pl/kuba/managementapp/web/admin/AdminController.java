@@ -22,6 +22,7 @@ public class AdminController {
     private final AdminService adminService;
     private final UserService userService;
     private final SalaryService salaryService;
+
     public AdminController(AdminService adminService,
                            UserService userService, SalaryService salaryService) {
         this.adminService = adminService;
@@ -30,7 +31,7 @@ public class AdminController {
     }
 
     @GetMapping("/adminsPanel")
-    public String adminsPanel(){
+    public String adminsPanel() {
         return "adminsPanel";
     }
 
@@ -44,10 +45,10 @@ public class AdminController {
     @PostMapping("/add")
     String register(@Valid @ModelAttribute("user") User user,
                     BindingResult bindingResult,
-                    @RequestParam String role){
-        if(bindingResult.hasErrors()){
+                    @RequestParam String role) {
+        if (bindingResult.hasErrors()) {
             return "addEmployeeForm";
-        }else{
+        } else {
             UserRole properRole = adminService.findRoleByName(role);
             user.getRoles().add(properRole);
             adminService.saveUser(user);
@@ -56,8 +57,7 @@ public class AdminController {
     }
 
     @GetMapping("/confirmation")
-    String registrationConfirmation()
-    {
+    String registrationConfirmation() {
         return "registration-confirmation";
     }
 
@@ -78,25 +78,24 @@ public class AdminController {
 //            return "delete-confirmation";
 //        }
         boolean emailExists = userService.checkIfUserExistByEmail(email);
-        if(emailExists){
+        if (emailExists) {
             userService.deleteUserByEmail(email);
             return "delete-confirmation";
-        }else{
+        } else {
             model.addAttribute("exists", true);
             return "deleteEmployeeForm";
         }
     }
 
     @GetMapping("/showAllEmployees")
-    String showEmployees(Model model){
+    String showEmployees(Model model) {
         List<User> employeesList = userService.findAllEmployees();
         model.addAttribute("employeesList", employeesList);
         return "employeeList";
     }
 
     @GetMapping("/showAllSalaries")
-    String showSalaries(Model model){
-//        List<User> employeesList = userService.findAllEmployees();
+    String showSalaries(Model model) {
         List<Salary> salaries = salaryService.findAllSalaries();
         model.addAttribute("salariesList", salaries);
         return "employeeSalariesList";

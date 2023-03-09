@@ -27,7 +27,7 @@ public class User {
     @Size(min = 5, max = 100 , message = "Email size must be between 2 and 20 characters")
     private String email;
     @NotBlank(message = "Password can not be blank")
-    @Size(min=4, max=50, message = "Password size must be between 4 and 50 characters")
+    @Size(min=4, max=200, message = "Password size must be between 4 and 50 characters")
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)

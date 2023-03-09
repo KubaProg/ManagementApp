@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/managementApp
+    url: jdbc:mysql://localhost:3306/managementapp
     username: root
     password: admin
   liquibase:
