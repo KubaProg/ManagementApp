@@ -86,6 +86,7 @@ public class ApiController {
         }
     }
 
+
     @DeleteMapping("user/{id}")
     ResponseEntity<?> deleteUser(@PathVariable Long id){
         userService.deleteUser(id);
