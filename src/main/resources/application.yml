@@ -1,8 +1,8 @@
 spring:
-  jpa:
   profiles:
+    default: deploy
+  jpa:
     hibernate:
       ddl-auto: validate
-    default: prod
   liquibase:
     change-log: classpath:db/changelog/master.xml
