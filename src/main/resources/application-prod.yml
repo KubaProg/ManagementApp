@@ -5,3 +5,4 @@ spring:
     password: admin
   liquibase:
     contexts: prod
+    change-log: classpath:db/changelog/master.xml

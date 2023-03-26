@@ -9,6 +9,8 @@ import java.util.List;
 public interface JobResultRepository extends CrudRepository<JobResult, Long> {
 
     List<JobResult> findAllByUserId(Long id);
-    JobResult findJobResultByUserIdAndHoursIsNull(Long currentUserId);
+
+    JobResult findFirstJobResultByUserIdAndHoursIsNull(Long currentUserId);
+
     List<JobResult> findAll();
 }

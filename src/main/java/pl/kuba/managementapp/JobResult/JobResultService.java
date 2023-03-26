@@ -20,7 +20,8 @@ public class JobResultService {
     JobResultRepository jobResultRepository;
     JobCycleRepository jobCycleRepository;
     JobCycleService jobCycleService;
-    DecimalFormat decimalFormat = new DecimalFormat("0.00");
+    DecimalFormat decimalFormat = new DecimalFormat("#.##");
+
 
     public JobResultService(JobResultRepository jobResultRepository, JobCycleRepository jobCycleRepository,  JobCycleService jobCycleService) {
         this.jobResultRepository = jobResultRepository;
@@ -36,7 +37,7 @@ public class JobResultService {
     }
 
     public JobResult findRecentJobResult(Long currentUserId) {
-        return jobResultRepository.findJobResultByUserIdAndHoursIsNull(currentUserId);
+        return jobResultRepository.findFirstJobResultByUserIdAndHoursIsNull(currentUserId);
     }
 
     public JobResult countTimeAndMoney(JobResult jobResult, Long id){
@@ -54,8 +55,8 @@ public class JobResultService {
         LocalTime end = LocalTime.parse(endTime);
         Duration duration = Duration.between(start, end);
         long minutes = duration.toMinutes();
-        String formatted = decimalFormat.format(Double.parseDouble(String.valueOf(minutes)));
-        return Double.parseDouble(formatted)/60;
+        String formatted = decimalFormat.format(Double.parseDouble(String.valueOf(minutes).replace(',', '.')));
+        return Double.parseDouble(formatted.replace(',', '.'))/60;
     }
 
     public Double countMoney(Double hours){
