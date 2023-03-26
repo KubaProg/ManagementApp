@@ -24,7 +24,7 @@ class SecurityConfig {
                 .requestMatchers("/adminsPanel/**").hasRole("ADMIN")
                 .requestMatchers("/api/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/**").permitAll()
-                .requestMatchers(PathRequest.toH2Console()).permitAll()
+              //  .requestMatchers(PathRequest.toH2Console()).permitAll()
                 .anyRequest().authenticated()
         );
         http.formLogin(login -> login.loginPage("/login").permitAll());
