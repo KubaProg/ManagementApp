@@ -5,4 +5,3 @@ spring:
     password: 8bede543
   liquibase:
     contexts: deploy
-    change-log: classpath:db/changelog/master.xml
