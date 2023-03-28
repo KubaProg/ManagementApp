@@ -48,6 +48,8 @@ public class JobCycleController {
         this.salaryService = salaryService;
     }
 
+    static final String PICKING = "Picking";
+
     @PostMapping("/saveJobAndUser")
     public String saveJobAndUser(@RequestParam String jobName, Model model)
     {
@@ -55,7 +57,7 @@ public class JobCycleController {
         jobCycle.setUser(currentUser);
         jobCycle.setJob(jobService.findByName(jobName));
 
-        if(jobName.equals("Zbieranie")){
+        if(jobName.equals(PICKING)){
             pickResult.setUser(userService.findCurrentUser());
         }else{
             jobResult.setUser(userService.findCurrentUser());
@@ -79,7 +81,7 @@ public class JobCycleController {
         jobCycleService.saveJobCycle(jobCycleToSave);
 
         //Saving PickResult object to db
-        if(jobCycle.getJob().getName().equals("Zbieranie"))
+        if(jobCycle.getJob().getName().equals(PICKING))
         {
             pickResult.setFieldName(fieldName);
             PickResult pickResultToSave = pickResultService.createObject(
@@ -113,7 +115,7 @@ public class JobCycleController {
         jobCycle.setEndTime(time);
         jobCycleService.saveJobCycle(jobCycle);
 
-        if(jobCycle.getJob().getName().equals("Zbieranie"))
+        if(jobCycle.getJob().getName().equals(PICKING))
         {
             return "weightForm";
         }else{

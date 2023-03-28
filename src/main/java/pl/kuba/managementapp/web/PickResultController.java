@@ -38,7 +38,7 @@ public class PickResultController {
     String getWeight(@RequestParam Double weight, Model model){
         PickResult pickResult = pickResultService.findRecentPickResult(userService.findCurrentUserId());
         pickResult.setWeight(weight);
-        pickResult.setMoney(pickResultService.countMoney(weight));
+        pickResult.setMoney(pickResultService.countMoney(weight.toString()));
         pickResultService.savePickResult(pickResult);
 
     model.addAttribute("jobName", "Picking");

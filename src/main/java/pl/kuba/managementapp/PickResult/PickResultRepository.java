@@ -8,7 +8,7 @@ import java.util.List;
 @Repository
 public interface PickResultRepository extends CrudRepository<PickResult, Long> {
 
-    PickResult findPickResultByUserIdAndWeightIsNull(Long id);
+    PickResult findFirstPickResultByUserIdAndWeightIsNull(Long id);
 
     List<PickResult> findAllByUserId(Long id);
 

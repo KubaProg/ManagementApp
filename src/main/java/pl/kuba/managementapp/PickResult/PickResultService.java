@@ -5,6 +5,7 @@ import pl.kuba.managementapp.User.User;
 
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class PickResultService {
@@ -19,19 +20,20 @@ public class PickResultService {
         pickResultRepository.save(pickResult);
     }
 
-    public double countMoney(Double weight){
-        Double result = (weight*1.5);
+    public double countMoney(String weight){
+        Double result = (Double.parseDouble(weight) * 1.5);
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
         String formatted = decimalFormat.format(result);
         return Double.parseDouble(formatted);
     }
+
 
     public PickResult createObject(Long id, String fieldName, User user) {
         return new PickResult(id,fieldName,user);
     }
 
     public PickResult findRecentPickResult(Long currentUserId) {
-        return pickResultRepository.findPickResultByUserIdAndWeightIsNull(currentUserId);
+        return pickResultRepository.findFirstPickResultByUserIdAndWeightIsNull(currentUserId);
     }
 
     public List<PickResultDto> getAll(){
