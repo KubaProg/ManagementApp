@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Chart</title>
+    <style>
+        .highcharts-figure,
+        .highcharts-data-table table {
+            min-width: 310px;
+            max-width: 800px;
+            margin: 1em auto;
+        }
+
+        /* Add styles for the chart container */
+        #container {
+            height: 400px;
+        }
+
+        .highcharts-tooltip h3 {
+            margin: 0.3em 0;
+        }
+
+        .highcharts-data-table table {
+            font-family: Verdana, sans-serif;
+            border-collapse: collapse;
+            border: 1px solid #ebebeb;
+            margin: 10px auto;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .highcharts-data-table caption {
+            padding: 1em 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .highcharts-data-table th {
+            font-weight: 600;
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table td,
+        .highcharts-data-table th,
+        .highcharts-data-table caption {
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table thead tr,
+        .highcharts-data-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        .highcharts-data-table tr:hover {
+            background: #f1f7ff;
+        }
+    </style>
+</head>
+<body>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<figure class="highcharts-figure">
+    <div id="container"></div>
+</figure>
+
+<script th:inline="javascript">
+    let dataPoints = JSON.parse(/*[[${dataPoints}]]*/ '[]');
+
+    // create chart
+    Highcharts.chart('container', {
+        chart: {
+            type: 'bubble',
+            plotBorderWidth: 1,
+            zoomType: 'xy'
+        },
+        legend: {
+            enabled: false
+        },
+        title: {
+            text: 'Hours to kilograms ratio'
+        },
+        xAxis: {
+            title: {
+                text: 'Kilograms picked'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Picking hours'
+            }
+        },
+        tooltip: {
+            useHTML: true,
+            headerFormat: '<table>',
+            pointFormat:
+                '<tr><th colspan="2" ><h3> ID: {point.id}</h3></th></tr>' +
+                '<tr><th>Name: </th><td>{point.name}</td></tr>' +
+                '<tr><th>Surname: </th><td>{point.surname}</td></tr>' +
+                '<tr><th>Efficincy factor: </th><td>{point.efficiencyFactor}</td></tr>',
+            footerFormat: '</table>',
+            followPointer: true
+        },
+        plotOptions: {
+            series: {
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}'
+                }
+            }
+        },
+        series: [{
+            data: dataPoints,
+            colorByPoint: true
+        }]
+
+    });
+    console.log(dataPoints);
+</script>
+
+</body>
+</html>
