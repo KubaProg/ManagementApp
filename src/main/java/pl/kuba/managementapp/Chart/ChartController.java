@@ -1,4 +1,4 @@
-package pl.kuba.managementapp.web;
+package pl.kuba.managementapp.Chart;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +14,11 @@ import pl.kuba.managementapp.Salary.SalaryService;
 public class ChartController {
 
     private final SalaryService salaryService;
+    private final DataPointService dataPointService;
 
-    public ChartController(SalaryService salaryService) {
+    public ChartController(SalaryService salaryService, DataPointService dataPointService) {
         this.salaryService = salaryService;
+        this.dataPointService = dataPointService;
     }
 
     @GetMapping("/displayScatteredChart")
@@ -33,6 +35,7 @@ public class ChartController {
             e.printStackTrace();
         }
 
+        dataPointService.createDataPointsList("truskawy");
         model.addAttribute("dataPoints", dataPointsJson);
         return "scatteredChart";
     }

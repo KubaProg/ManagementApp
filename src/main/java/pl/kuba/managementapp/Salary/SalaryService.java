@@ -40,8 +40,9 @@ public class SalaryService {
                 .map(JobResult::getMoney)
                 .reduce(0.0, Double::sum);
         Double pickResultsMoney = pickResults.stream()
-                .map(PickResult::getMoney)
-                .reduce(0.0, Double::sum);
+                .mapToDouble(pickResult -> pickResult.getMoney() == null ? 0.0 : pickResult.getMoney())
+                .reduce(Double::sum)
+                .orElse(0.0);
         Double sum = jobResultsMoney+pickResultsMoney;
 
         Salary salary = salaryRepository.findByUserId(id).orElse(null);

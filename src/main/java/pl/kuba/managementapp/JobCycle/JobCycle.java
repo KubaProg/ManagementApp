@@ -28,7 +28,8 @@ public class JobCycle {
     @JoinColumn(name = "field_id", referencedColumnName = "id")
     private Field field;
 
-    public JobCycle(Long id, String startTime, String endTime, Job job, User user, Field field) {
+
+    public JobCycle(Long id, String startTime, String endTime,  Job job, User user, Field field) {
         this.id = id;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -37,7 +38,7 @@ public class JobCycle {
         this.field = field;
     }
 
-    public JobCycle(Long id, String startTime, Job job, User user, Field field) {
+    public JobCycle(Long id, String startTime,  Job job, User user, Field field) {
         this.id = id;
         this.startTime = startTime;
         this.job = job;

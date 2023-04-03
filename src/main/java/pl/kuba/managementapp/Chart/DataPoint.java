@@ -1,4 +1,4 @@
-package pl.kuba.managementapp.web;
+package pl.kuba.managementapp.Chart;
 
 public class DataPoint {
 
