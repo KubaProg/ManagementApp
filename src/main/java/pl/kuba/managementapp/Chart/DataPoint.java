@@ -15,7 +15,7 @@ public class DataPoint {
         this.y = y;
         this.name = name;
         this.surname = surname;
-        this.efficiencyFactor =x/y;
+        this.efficiencyFactor = (this.x/this.y);
         this.id = id;
     }
 

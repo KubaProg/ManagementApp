@@ -21,7 +21,7 @@ public class ChartController {
 
     @GetMapping("/displayScatteredChart")
     public String bubbleChart(Model model) {
-        List<DataPoint> dataPoints = dataPointService.createDataPointsList("Blueberries");
+        List<DataPoint> dataPoints = dataPointService.createDataPointsList("Grapes");
 
         ObjectMapper objectMapper = new ObjectMapper();
         String dataPointsJson = "";
