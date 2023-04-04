@@ -1,5 +1,7 @@
 package pl.kuba.managementapp.Chart;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 import pl.kuba.managementapp.Field.FieldRepository;
 import pl.kuba.managementapp.JobCycle.JobCycleRepository;
@@ -35,10 +37,12 @@ public class DataPointService {
         this.fieldRepository = fieldRepository;
     }
 
-    public List<DataPoint> createDataPointsList(String fieldName){
+    public String createDataPointsJson(String fieldName) throws JsonProcessingException {
         List<DataPoint> dataPoints = new ArrayList<>();
-        List<Long> employeesId = userRepository.findAllByRolesContains(userRoleRepository.findByName("USER").orElseThrow()).stream().map(User::getId).toList();
-
+        List<Long> employeesId = userRepository.findAllByRolesContains(userRoleRepository.findByName("USER").orElseThrow())
+                .stream()
+                .map(User::getId)
+                .toList();
 
         for (Long id : employeesId) {
             Double totalWeight = pickResultRepository.findAllByUserIdAndFieldName(id, fieldName)
@@ -47,24 +51,19 @@ public class DataPointService {
                     .reduce(0.0, Double::sum);
             System.out.println(totalWeight);
 
-            Long choosenFieldId = fieldRepository.findByName(fieldName).getId();
+            Long chosenFieldId = fieldRepository.findByName(fieldName).getId();
             User user = userRepository.findById(id).orElseThrow();
 
-            Double totalPickingTime = jobCycleRepository.findAllByUserIdAndJob_IdAndField_Id(id, PICKING_FIELD_ID,choosenFieldId)
+            Double totalPickingTime = jobCycleRepository.findAllByUserIdAndJob_IdAndField_Id(id, PICKING_FIELD_ID,chosenFieldId)
                     .stream()
                     .map(JobResultService::countDuration)
                     .reduce(0.0, Double::sum);
 
             dataPoints.add(new DataPoint(totalWeight, totalPickingTime, user.getFirst_name(), user.getLast_name(),id));
         }
-        return dataPoints;
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.writeValueAsString(dataPoints);
     }
 
-    // 1. Iterujemy po id wszystkich pracowników z tabeli application_user
-// 2. Sumujemy wszystkie wartosci z kolumny weight gdzie user_id == id oraz field_name == nazwa pola do którego akurat liczymy statystyki
-// 3. Dla każdego rekordu gdzie user_id = id oraz job_id = 2 liczymy duraion miedzy start i end time i sumujemy to do godzin
-// 4. Tworzymy nowy obiekt DataPoint z tych danych i ogolnie danych konkretnego pracownika
-// 5. Dodajemy to do listy
-// 6. W ChartControllerze wywołujemy metodę zwracającą listę DataPointów
-// 7. Wysyłamy listę do scatteredChart
 }
