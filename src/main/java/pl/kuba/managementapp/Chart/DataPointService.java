@@ -49,7 +49,6 @@ public class DataPointService {
                     .stream()
                     .map(PickResult::getWeight)
                     .reduce(0.0, Double::sum);
-            System.out.println(totalWeight);
 
             Long chosenFieldId = fieldRepository.findByName(fieldName).getId();
             User user = userRepository.findById(id).orElseThrow();
@@ -59,7 +58,10 @@ public class DataPointService {
                     .map(JobResultService::countDuration)
                     .reduce(0.0, Double::sum);
 
-            dataPoints.add(new DataPoint(totalWeight, totalPickingTime, user.getFirst_name(), user.getLast_name(),id));
+            if(totalWeight!=0 && totalPickingTime !=0){ // nie pracownikow ktorzy nie zaczeli pracy i nie zebrali nic
+                dataPoints.add(new DataPoint(totalWeight, totalPickingTime, user.getFirst_name(), user.getLast_name(),id));
+
+            }
         }
 
         ObjectMapper objectMapper = new ObjectMapper();

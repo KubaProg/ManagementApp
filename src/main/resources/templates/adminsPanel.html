@@ -35,6 +35,13 @@
         </div>
     </a>
 </section>
+<section class="chart">
+    <a th:href="@{/showFruitList}">
+        <div class="charts">
+            <p>SHOW EFFICIENCY</p>
+        </div>
+    </a>
+</section>
 <div class="logout">
     <button sec:authorize="isAuthenticated()">
         <a th:href="@{/logout}">Log out</a>

@@ -69,3 +69,36 @@ a {
     text-decoration: none;
     color: white;
 }
+
+.charts {
+    background-color: green;
+    border-radius: 50px;
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    height: 50%;
+    box-shadow: 2px 2px 5px gray;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.charts:hover {
+    transform: translateY(-5px);
+    box-shadow: 2px 7px 5px gray;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+.chart {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Fields list</title>
+  <link rel="stylesheet" href="../static/styles/jobListStyles.css" th:href="@{styles/jobListStyles.css}">
+</head>
+<body>
+<header>
+  <h1>Check picking efficiency on: </h1>
+</header>
+<main>
+  <div class="list">
+    <ul class="myUL" th:remove="all-but-first">
+      <li th:each="field: ${fields}">
+        <a href="#">
+          <form th:action="@{/displayScatteredChart}" method="post">
+            <button class="button" th:text="*{field}" th:value="*{field}" th:name="field">
+              Job 1
+            </button>
+          </form>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <button class="button">
+            Job 2
+          </button>
+        </a>
+      </li>
+    </ul>
+  </div>
+</main>
+</body>
+</html>
