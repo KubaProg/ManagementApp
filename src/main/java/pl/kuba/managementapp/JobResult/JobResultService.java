@@ -20,7 +20,7 @@ public class JobResultService {
     JobResultRepository jobResultRepository;
     JobCycleRepository jobCycleRepository;
     JobCycleService jobCycleService;
-    DecimalFormat decimalFormat = new DecimalFormat("#.##");
+    static DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
 
     public JobResultService(JobResultRepository jobResultRepository, JobCycleRepository jobCycleRepository,  JobCycleService jobCycleService) {
@@ -48,7 +48,7 @@ public class JobResultService {
         return jobResult;
     }
 
-    public Double countDuration(JobCycle jobCycle){
+    public static Double countDuration(JobCycle jobCycle){
         String startTime = jobCycle.getStartTime();
         String endTime = jobCycle.getEndTime();
         LocalTime start = LocalTime.parse(startTime);

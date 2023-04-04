@@ -12,4 +12,6 @@ public interface JobCycleRepository extends CrudRepository<JobCycle, Long> {
 
     List<JobCycle> findAllByUserId(Long id);
 
+    List<JobCycle> findAllByUserIdAndJob_IdAndField_Id(Long user_Id, Long job_id,Long field_id);
+
 }
