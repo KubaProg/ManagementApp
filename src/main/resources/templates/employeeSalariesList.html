@@ -20,7 +20,7 @@
     <ul class="myUL" th:remove="all-but-first">
       <li th:each="salary: ${salariesList}">
         <div>
-          <p th:text="*{'Name: ' + salary.getUser().getFirst_name() + ' | Surname: ' + salary.getUser().getLast_name() + ' |  Earned: ' + salary.getSalary_value()}">
+          <p th:text="*{'Name: ' + salary.getFirst_name() + ' | Surname: ' + salary.getLast_name()+ ' |  Earned: ' + salary.getValue()}">
             Dane 1
           </p>
         </div>

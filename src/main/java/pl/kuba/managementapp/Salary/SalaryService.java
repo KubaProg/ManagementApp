@@ -60,8 +60,11 @@ public class SalaryService {
                 .toList();
     }
 
-    public List<Salary> findAllSalaries(){
-        return salaryRepository.findAll();
+    public List<SalaryDto> findAllSalaries(){
+        return salaryRepository.findAll()
+                .stream()
+                .map(salaryDtoMapper::map)
+                .toList();
     }
 
     public Optional<SalaryDto> getSalaryById(Long id) {

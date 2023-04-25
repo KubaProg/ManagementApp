@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.kuba.managementapp.Salary.Salary;
+import pl.kuba.managementapp.Salary.SalaryDto;
 import pl.kuba.managementapp.Salary.SalaryService;
 import pl.kuba.managementapp.User.User;
 import pl.kuba.managementapp.User.UserRole;
@@ -96,7 +97,7 @@ public class AdminController {
 
     @GetMapping("/showAllSalaries")
     String showSalaries(Model model) {
-        List<Salary> salaries = salaryService.findAllSalaries();
+        List<SalaryDto> salaries = salaryService.findAllSalaries();
         model.addAttribute("salariesList", salaries);
         return "employeeSalariesList";
     }

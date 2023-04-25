@@ -1,9 +1,11 @@
 package pl.kuba.managementapp.Salary;
 
+import java.math.BigDecimal;
+
 public class SalaryDto {
 
     private Long id;
-    private Double value;
+    private BigDecimal value;
     private Long user_id;
     private String first_name;
     private String last_name;
@@ -16,11 +18,11 @@ public class SalaryDto {
         this.id = id;
     }
 
-    public Double getValue() {
+    public BigDecimal getValue() {
         return value;
     }
 
-    public void setValue(Double value) {
+    public void setValue(BigDecimal value) {
         this.value = value;
     }
 
