@@ -1,12 +1,15 @@
 package pl.kuba.managementapp.Chart;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class DataPoint {
 
     double x; // kilograms
     double y;  // hours
     private String name;
     private String surname;
-    private double efficiencyFactor;
+    private BigDecimal efficiencyFactor;
     private double id;
 
 
@@ -15,7 +18,7 @@ public class DataPoint {
         this.y = y;
         this.name = name;
         this.surname = surname;
-        this.efficiencyFactor = (this.x/this.y);
+        this.efficiencyFactor = BigDecimal.valueOf((this.x/this.y)).setScale(2, RoundingMode.HALF_DOWN);;
         this.id = id;
     }
 
@@ -51,11 +54,12 @@ public class DataPoint {
         this.surname = surname;
     }
 
-    public double getEfficiencyFactor() {
+
+    public BigDecimal getEfficiencyFactor() {
         return efficiencyFactor;
     }
 
-    public void setEfficiencyFactor(double efficiencyFactor) {
+    public void setEfficiencyFactor(BigDecimal efficiencyFactor) {
         this.efficiencyFactor = efficiencyFactor;
     }
 
