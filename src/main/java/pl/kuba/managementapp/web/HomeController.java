@@ -10,12 +10,17 @@ public class HomeController {
 
     @GetMapping("/")
     public String hello(){
-        return "helloPage";
+        return "landingPage";
     }
 
     @GetMapping("/choice")
     public String choiceForm(){
         return "choice-page";
+    }
+
+    @GetMapping("/helloPage")
+    public String choiceToLogIn(){
+        return "helloPage";
     }
 
 
