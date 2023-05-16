@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
 
@@ -11,10 +11,11 @@
 
     <link rel="stylesheet" href="../static/styles/landingStyles.css" th:href="@{styles/landingStyles.css}">
     <title>PlantPro</title>
+
 </head>
 
 
-<body>
+<body >
     <!-- First Section -->
     <section class="welcome-container" id="welcome">
 
@@ -47,27 +48,27 @@
             We are delivering highly available and easy to use software</p>
         <div class="team-images">
             <div class="profile">
-                <img class="profile-image" src="../static/images/sad_zaba.png" th:src="@{/images/sad_zaba.png}" alt="Jan's picture">
+                <img class="profile-image" src="../static/images/sadZaba.png"  th:src="@{/images/sadZaba.png}" alt="Jan's picture">
                 <h3>Jan Rapacz</h3>
                 <p><em>Graphic Designer</em></p>
             </div>
             <div class="profile">
-                <img class="profile-image" src="../static/images/sad_zaba.png" th:src="@{/images/sad_zaba.png}" alt="Jacobs's picture">
+                <img class="profile-image" src="../static/images/sadZaba.png" th:src="@{/images/sadZaba.png}" alt="Jacobs's picture">
                 <h3>Jakub Opiełka</h3>
                 <p><em>Leader</em></p>
             </div>
             <div class="profile">
-                <img class="profile-image" src="../static/images/sad_zaba.png" th:src="@{/images/sad_zaba.png}" alt="Pawel's picture">
+                <img class="profile-image" src="../static/images/sadZaba.png" th:src="@{/images/sadZaba.png}" alt="Pawel's picture">
                 <h3>Paweł Dyśko</h3>
                 <p><em>Frontend Developer</em></p>
             </div>
             <div class="profile">
-                <img class="profile-image" src="../static/images/sad_zaba.png" th:src="@{/images/sad_zaba.png}" alt="Michal's picture">
+                <img class="profile-image" src="../static/images/sadZaba.png" th:src="@{/images/sadZaba.png}" alt="Michal's picture">
                 <h3>Michał Moryc</h3>
                 <p><em>Backend Developer</em></p>
             </div>
             <div class="profile">
-                <img class="profile-image" src="../images/sad_zaba.png" th:src="@{/images/sad_zaba.png}"  alt="Marcin's picture">
+                <img class="profile-image" src="../static/images/sadZaba.png" th:src="@{/images/sadZaba.png}" alt="Marcin's picture">
                 <h3>Marcin Hajdecki</h3>
                 <p><em>QA Tester</em></p>
             </div>
@@ -80,7 +81,7 @@
         <p style="font-size: larger;">See how you can improve your farming business with PlantPro system.</p>
 
         <div class="about-section">
-            <img src="../images/choose_job_img.png" alt="choose-job-img">
+            <img  th:src="@{/images/chooseJobImg.png}" alt="chooseJobImg">
             <div class="about-section-text">
                 <h3>Start by choosing a job</h3>
                 <p>Employees start a day with picking up a job that they will do. If you decide to user our software, we will adjust the list to your farm needs.</p>
@@ -92,11 +93,11 @@
                 <h3>Different types of field</h3>
                 <p>Our clients often have large fields in their farm - that’s why the next step for your worker is to pick a field that they will work on. This way your business is becoming more efficient because work is split equally between employees.</p>
             </div>
-            <img src="../images/field_types_img.png" alt="field-types-img">
+            <img src="../static/images/fieldTypesImg.png" th:src="@{/images/fieldTypesImg.png}" alt="field-types-img">
         </div> 
 
            <div class="about-section">
-            <img src="../images/salary_list_img.png" alt="salary-list-img">
+            <img src="../static/images/salaryList.png" th:src="@{/images/salaryList.png}" alt="salary-list-img">
             <div class="about-section-text">
                 <h3>Your employees data in one place</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit non lacus ut semper. In sollicitudin tincidunt elit non maximus. Proin sagittis, sem non luctus pretium, nunc enim fringilla nisl, quis viverra massa felis sit amet orci. Etiam eu dui enim. </p>

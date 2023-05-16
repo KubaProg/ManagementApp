@@ -20,7 +20,7 @@ a{
 /*---------first section-------*/
 .welcome-container{
 
-    background-image: url("/images/BGImage.png");
+    background-image: url("/static/images/BGImage.png");
     background-size: cover;
     height: 480px;
     padding-top: 1px;

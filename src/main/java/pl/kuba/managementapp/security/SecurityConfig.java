@@ -23,6 +23,8 @@ class SecurityConfig {
                 .requestMatchers("/jobList").hasAnyRole("USER","ADMIN")
                 .requestMatchers("/adminsPanel/**").hasRole("ADMIN")
                 .requestMatchers("/api/**").permitAll()
+                .requestMatchers("/helloPage").permitAll()
+                .requestMatchers("/images/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/**").permitAll()
               //  .requestMatchers(PathRequest.toH2Console()).permitAll()
                 .anyRequest().authenticated()
