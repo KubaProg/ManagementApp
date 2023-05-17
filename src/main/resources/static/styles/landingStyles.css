@@ -18,13 +18,18 @@ a{
 /*-----------classes-----------*/
 
 /*---------first section-------*/
-.welcome-container{
-
-    background-image: url("/static/images/BGImage.png");
+.welcome-container {
     background-size: cover;
     height: 480px;
     padding-top: 1px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
 }
+
+
+
+
 .navbar{
     position: fixed;
     top: 0;
@@ -155,7 +160,7 @@ a{
 .contact-us{
 
     padding: 100px 10%;
-    background-image: url(images/Background-contactx15.png);
+    background-image: url(/static/images/BGContact.png);
     height: 100%;
 
     color: white;
