@@ -1,6 +1,4 @@
 spring:
-#  autoconfigure:
-#    exclude: org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration
   profiles:
     default: deploy
   jpa:
